@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Image Gallery</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background: lightblue;
+        }
+
+        img {
+            width: 300px;
+            height: 250px;
+            border-radius: 15px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My Image Gallery</h1>
+
+    <img id="photo"
+    src="https://picsum.photos/id/10/400/300">
+
+    <p id="number">Image 1 of 4</p>
+
+    <button onclick="previous()">Previous</button>
+    <button onclick="next()">Next</button>
+
+    <script>
+        let images = [
+            "https://picsum.photos/id/10/400/300",
+            "https://picsum.photos/id/20/400/300",
+            "https://picsum.photos/id/30/400/300",
+            "https://picsum.photos/id/40/400/300"
+        ];
+
+        let i = 0;
+
+        function showImage() {
+            document.getElementById("photo").src = images[i];
+            document.getElementById("number").innerHTML =
+                "Image " + (i + 1) + " of 4";
+        }
+
+        function next() {
+            i = (i + 1) % images.length;
+            showImage();
+        }
+
+        function previous() {
+            i = (i - 1 + images.length) % images.length;
+            showImage();
+        }
+    </script>
+
+</body>
+</html> 
